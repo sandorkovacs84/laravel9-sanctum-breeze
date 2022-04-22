@@ -30,5 +30,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/spa', [SpaController::class, 'index']);
+Route::post('/spa/login', [SpaController::class, 'login']);
 
 require __DIR__.'/auth.php';

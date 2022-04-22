@@ -22451,7 +22451,7 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     var submit = function submit() {
-      form.post('/login');
+      form.post('/spa/login');
     };
 
     var __returned__ = {
