@@ -3,6 +3,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeButton from '@/Components/Button.vue';
+import BreezeNavLink from '@/Components/NavLink.vue';
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
 
 defineProps({
@@ -23,11 +24,17 @@ const submit = () => {
 <template>
     <BreezeGuestLayout>
 
-    <Head title="SPA" />
+        <Head title="SPA" />
 
-    <div>
         <h1 class="text-3xl">SPA</h1>
 
+        <div  v-if="$page.props.auth.user">
+            <h2>Welcome, {{ $page.props.auth.user.name }}</h2>
+            <BreezeNavLink :href="route('spa.logout')" method="post" as="button">
+                Log Out
+            </BreezeNavLink>
+        </div>
+        <div v-else>
             <form @submit.prevent="submit">
 
                 <div class="mt-4">
@@ -47,9 +54,8 @@ const submit = () => {
                 </div>
                 
             </form>
-        
         </div>
-        
-    </BreezeGuestLayout>
+            
+        </BreezeGuestLayout>
 
 </template>

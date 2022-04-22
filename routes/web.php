@@ -29,7 +29,8 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/spa', [SpaController::class, 'index']);
-Route::post('/spa/login', [SpaController::class, 'login']);
+Route::get('/spa', [SpaController::class, 'index'])->name('spa');
+Route::post('/spa/login', [SpaController::class, 'login'])->name('spa.login');
+Route::post('/spa/logout', [SpaController::class, 'logout'])->name('spa.logout');
 
 require __DIR__.'/auth.php';
