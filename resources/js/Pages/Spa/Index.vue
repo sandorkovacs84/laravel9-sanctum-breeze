@@ -5,6 +5,7 @@ import BreezeLabel from '@/Components/Label.vue';
 import BreezeButton from '@/Components/Button.vue';
 import BreezeNavLink from '@/Components/NavLink.vue';
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 
 defineProps({
 
@@ -27,6 +28,8 @@ const submit = () => {
         <Head title="SPA" />
 
         <h1 class="text-3xl">SPA</h1>
+
+        <BreezeValidationErrors class="mb-4" />
 
         <div  v-if="$page.props.auth.user">
             <h2>Welcome, {{ $page.props.auth.user.name }}</h2>
