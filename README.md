@@ -35,3 +35,22 @@ php artisan migrate
 ```
 php artisan serve --host=9.0.0.0 --port=8000
 ```
+
+**Install Sanctum**
+
+```
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+
+```
+
+Add sanctum middleware to api: app/Http/Kernel.php
+
+```
+'api' => [
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    'throttle:api',
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+```
